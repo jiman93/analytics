@@ -1,0 +1,100 @@
+<div style="height: 48px;padding-bottom: 3px;text-align: right; margin-left:auto; margin-right:5px;" class="app-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value, this)" placeholder="Search">
+  </mat-form-field>
+</div>
+
+<div class="app-container mat-elevation-z8">
+
+  <mat-table class="shipDetails" [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">         
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="jobId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Job No</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.jobId}} 
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.type}} 
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="shipCategory">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Ship Category</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.shipCategory}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="equipmentStatus">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Equipment Status</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.equipmentStatus}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Start Date </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.startDate}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dueDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Due Date</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.dueDate}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Job Status</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns" (click)=onClickRow($event)></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <div class="app-footer-row mat-header-row" role="row">
+    <div class="app-footer-cell mat-header-cell cdk-column-select mat-column-select" role="columnheader">
+        &nbsp;
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-jobId mat-column-jobId" role="columnheader">
+        <input (keyup)="applyColumnFilter('jobId', $event.target.value)" placeholder="jobId" />
+    </div>    
+
+    <div class="app-footer-cell mat-header-cell cdk-column-type mat-column-type" role="columnheader">
+        <input (keyup)="applyColumnFilter('type', $event.target.value)" placeholder="type" />
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-title mat-column-title" role="columnheader">
+        <input (keyup)="applyColumnFilter('title', $event.target.value)" placeholder="title" />
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-shipCategory mat-column-shipCategory" role="columnheader">
+        <input (keyup)="applyColumnFilter('shipCategory', $event.target.value)" placeholder="shipCategory" />
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-equipmentStatus mat-column-equipmentStatus" role="columnheader">
+        <input (keyup)="applyColumnFilter('equipmentStatus', $event.target.value)" placeholder="equipmentStatus" />
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-startDate mat-column-startDate" role="columnheader">
+        <input (keyup)="applyColumnFilter('startDate', $event.target.value)" placeholder="startDate" />
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-dueDate mat-column-dueDate" role="columnheader">
+        <input (keyup)="applyColumnFilter('dueDate', $event.target.value)" placeholder="dueDate" />
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-status mat-column-status" role="columnheader">
+        <input (keyup)="applyColumnFilter('status', $event.target.value)" placeholder="status" />
+    </div>
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[8, 25, 50, 100]"></mat-paginator>
+</div>

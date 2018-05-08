@@ -1,0 +1,16 @@
+<div style='width:100%;height:100%;border: 2px solid #c3c3c3;overflow:hidden'>
+    <div style='height:480px;overflow:auto'>
+        <ngx-charts-bar-vertical-2d class="wp-chart-dark"
+            [view]="view" 
+            [scheme]="categoryDashboard.colorScheme" 
+            [results]="categoryDashboard.data.multi" 
+            [gradient]="categoryDashboard.gradient"
+            [legend]="categoryDashboard.showLegend" 
+            [xAxis]="categoryDashboard.showXAxis" [yAxis]="categoryDashboard.showYAxis" 
+            [showXAxisLabel]="categoryDashboard.showXAxisLabel"
+            [showYAxisLabel]="categoryDashboard.showYAxisLabel" 
+            [xAxisLabel]="categoryDashboard.xAxisLabel" [yAxisLabel]="categoryDashboard.yAxisLabel"
+            (select)="categoryDashboard.actions.charts.onSelect($event, vm)">
+        </ngx-charts-bar-vertical-2d>
+    </div>
+</div>

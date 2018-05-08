@@ -1,0 +1,31 @@
+<div class="app-container">
+  <h2> Attachments </h2>
+  <form class="app-container" [formGroup]="jobInstruction">
+        <section class="app-section">
+          <div class="app-container app-section-column">
+            <mat-form-field>
+              <textarea matInput type="text" placeholder="Instructions" rows=10 formControlName="extraInstruction"></textarea>
+            </mat-form-field>
+          </div>
+        </section>
+        <section class="app-section">
+          <div class="app-container app-section-column">
+            <mat-list>
+              <h3 mat-subheader>Attachments</h3>
+              <mat-list-item *ngFor="let attachment of attachments.controls; let i=index" [formGroup]="attachment" 
+              [class.selected]="selectedAttachmentIndex === i" (click)="onSelectAttachment(i)">
+                  <h4 mat-line>{{attachment.value.filename}}</h4>
+                  <mat-form-field>
+                    <input matInput type="text" placeholder="Title" formControlName="title" />
+                  </mat-form-field>
+                  <input type="file" (change)="loadFile($event,i)"/>
+                  <mat-divider [inset]="true"></mat-divider>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </mat-list>
+          <button mat-raised-button (click)='addAttachment()'>Add Attachment</button>
+          <button mat-raised-button  (click)="deleteAttachment()" [disabled]='selectedAttachmentIndex== -1'>Delete Attachment</button>
+          </div>
+        </section>
+  </form>
+</div>

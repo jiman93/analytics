@@ -1,0 +1,111 @@
+<div style="height: 48px;padding-bottom: 3px;text-align: right; margin-left:auto; margin-right:5px;" class="app-header">
+  <button mat-raised-button (click)="onCreate()">Create</button>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value, this)" placeholder="Search">
+  </mat-form-field>
+</div>
+
+
+<div class="app-container mat-elevation-z8">
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">         
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="facility">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Facility</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.facility}} 
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="equipment">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Equipment</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.equipment}} 
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="jobRequestNo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Job Request No</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.jobRequestNo}} 
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.title}} 
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.type}} 
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="dateRequested">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Date Requested</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.dateRequested}} 
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="fromSection">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>From Section</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.fromSection}} 
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="toSection">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>To Section</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.toSection}} 
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.status}} 
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns" (click)=onClickRow($event)></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <div class="app-footer-row mat-header-row" role="row">
+    <div class="app-footer-cell mat-header-cell cdk-column-select mat-column-select" role="columnheader">
+        &nbsp;
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-facility mat-column-facility" role="columnheader">
+        <input (keyup)="applyColumnFilter('facility', $event.target.value)" placeholder="facility" />
+    </div>    
+    <div class="app-footer-cell mat-header-cell cdk-column-equipment mat-column-equipment" role="columnheader">
+        <input (keyup)="applyColumnFilter('equipment', $event.target.value)" placeholder="equipment" />
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-jobRequestNo mat-column-jobRequestNo" role="columnheader">
+        <input (keyup)="applyColumnFilter('jobRequestNo', $event.target.value)" placeholder="jobRequestNo" />
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-title mat-column-title" role="columnheader">
+        <input (keyup)="applyColumnFilter('title', $event.target.value)" placeholder="title" />
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-type mat-column-type" role="columnheader">
+        <input (keyup)="applyColumnFilter('type', $event.target.value)" placeholder="type" />
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-equipment mat-column-dateRequested" role="columnheader">
+        <input (keyup)="applyColumnFilter('dateRequested', $event.target.value)" placeholder="dateRequested" />
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-fromSection mat-column-fromSection" role="columnheader">
+        <input (keyup)="applyColumnFilter('fromSection', $event.target.value)" placeholder="fromSection" />
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-toSection mat-column-toSection" role="columnheader">
+        <input (keyup)="applyColumnFilter('toSection', $event.target.value)" placeholder="toSection" />
+    </div>
+    <div class="app-footer-cell mat-header-cell cdk-column-status mat-column-status" role="columnheader">
+        <input (keyup)="applyColumnFilter('status', $event.target.value)" placeholder="status" />
+    </div>    
+    
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[8, 25, 50, 100]"></mat-paginator>
+</div>

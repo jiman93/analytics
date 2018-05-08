@@ -1,0 +1,56 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <mat-toolbar color="primary" class="app-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="app-app-name">Enterprise Assets Management</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="app-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav class="app-sidenav-container-panel" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list class="app-sidenav-container-panel">
+        <h1 class="app-sidenav-container-item">
+          Maintenance
+        </h1>
+        <a class="app-sidenav-container-item" mat-list-item routerLinkActive="active" routerLink="/job_request/list">
+          <mat-icon>view_list</mat-icon>
+          Job Request
+        </a>
+        <mat-divider [inset]="false"></mat-divider>
+        <h1 class="app-sidenav-container-item">
+          Supply
+        </h1>
+        <a class="app-sidenav-container-item" mat-list-item routerLinkActive="active" routerLink="CreateSupplyOrderWizard">
+          <mat-icon>fiber_new</mat-icon>
+          Create Order Wizard
+        </a>
+        <a class="app-sidenav-container-item" mat-list-item routerLinkActive="active" routerLink="/supplyOrders">
+          <mat-icon>view_list</mat-icon>
+          List Orders
+        </a>
+        <mat-divider [inset]="false"></mat-divider>
+        <h1 class="app-sidenav-container-item">
+          Configurations
+        </h1>
+        <a class="app-sidenav-container-item" mat-list-item routerLinkActive="active" routerLink="/groups">
+          <mat-icon>view_list</mat-icon>
+          Groups
+        </a>
+        <a class="app-sidenav-container-item" mat-list-item routerLinkActive="active" routerLink="/users">
+          <mat-icon>verified_user</mat-icon>
+          Users
+        </a>
+        <a class="app-sidenav-container-item" mat-list-item routerLinkActive="active" routerLink="/lookups">
+          <mat-icon>view_list</mat-icon>
+          Lookups
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

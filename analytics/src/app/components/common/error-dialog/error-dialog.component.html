@@ -1,0 +1,13 @@
+<div >
+  <mat-toolbar color="primary" class="eps-errorToolbar">
+    <mat-icon>report_problem</mat-icon>
+    <h2 mat-dialog-title>{{data.title}}</h2>
+  </mat-toolbar>
+  <h3 class="error">{{data.msg}}</h3>
+  <mat-dialog-content class="error">
+    {{data.detail}}
+  </mat-dialog-content>
+  <mat-dialog-actions class="eps-bottom">
+    <button mat-raised-button (click)="closeDialog()">Ok</button>
+  </mat-dialog-actions>
+</div>

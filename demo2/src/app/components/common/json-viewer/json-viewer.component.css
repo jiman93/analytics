@@ -1,0 +1,18 @@
+.tree-node {
+    color: darkblue !important;    
+}
+
+.tree-node-leaf {
+    color: #673AB7 !important;
+    font-weight: bold;
+}
+
+.tree-node-value {
+    color: red !important;    
+    font-weight: normal;
+}
+
+.tree-node-active {
+    color: #402472 !important;    
+    font-weight: bolder;
+}

@@ -1,0 +1,60 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <mat-toolbar color="primary" class="app-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="app-app-name">Analytics</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="app-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav class="app-sidenav-container-panel" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list class="app-sidenav-container-panel">
+        <h1 class="app-sidenav-container-item">
+          Ship Readiness
+        </h1>
+        <a class="app-sidenav-container-item" mat-list-item routerLinkActive="active" routerLink="/shipReadiness">
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </a>
+        <mat-divider [inset]="false"></mat-divider>
+        <h1 class="app-sidenav-container-item">
+          Maintenance Status
+        </h1>
+        <a class="app-sidenav-container-item" mat-list-item routerLinkActive="active" routerLink="/maintenanceStatus">
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </a>
+        <mat-divider [inset]="false"></mat-divider>
+        <h1 class="app-sidenav-container-item">
+          Equipment Status
+        </h1>
+        <a class="app-sidenav-container-item" mat-list-item routerLinkActive="active" routerLink="/NwasCreateOrderWizard">
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </a>
+        <a class="app-sidenav-container-item" mat-list-item routerLinkActive="active" routerLink="/NwasOrders">
+          <mat-icon>view_list</mat-icon>
+          List
+        </a>
+        <mat-divider [inset]="false"></mat-divider>
+        <h1 class="app-sidenav-container-item">
+          Outstanding Jobs
+        </h1>
+        <a class="app-sidenav-container-item" mat-list-item routerLinkActive="active" routerLink="/NwasCreateOrderWizard">
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </a>
+        <a class="app-sidenav-container-item" mat-list-item routerLinkActive="active" routerLink="/NwasOrders">
+          <mat-icon>view_list</mat-icon>
+          List
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content style="padding:5px">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,31 @@
+The current date is: Thu 29/03/2018 
+Enter the new date: (dd-mm-yy) Path: .
+Working Copy Root Path: C:\projects\test123\trunk\lam2demo
+URL: https://erickyi2006@github.com/erickyi2006/navy-m.git/trunk/maintenance5
+Relative URL: ^/trunk/maintenance5
+Repository Root: https://erickyi2006@github.com/erickyi2006/navy-m.git
+
+M       .angular-cli.json
+M       README.md
+M       e2e\app.e2e-spec.ts
+M       package-lock.json
+M       package.json
+M       src\app\app.component.html
+M       src\app\app.module.ts
+M       src\app\components\common\error-dialog\error-dialog.component.html
+M       src\app\components\common\error-dialog\error-dialog.component.less
+M       src\app\components\common\info-dialog\info-dialog.component.html
+M       src\app\components\common\info-dialog\info-dialog.component.less
+M       src\app\components\common\json-viewer\json-viewer.component.html
+D       src\app\components\common\nwas-ntd-selector
+D       src\app\components\common\nwas-ntd-selector\nwas-ntd-selector.component.html
+D       src\app\components\common\nwas-ntd-selector\nwas-ntd-selector.component.less
+D       src\app\components\common\nwas-ntd-selector\nwas-ntd-selector.component.ts
+M       src\app\components\jobrequest\jr-create\jr-create.component.html
+M       src\app\components\jobrequest\jr-create\jr-create.component.ts
+!       src\app\components\jobrequest\jr-list\jr-list.component.css
+M       src\app\components\jobrequest\jr-list\jr-list.component.html
+?       src\app\components\jobrequest\jr-list\jr-list.component.less
+M       src\app\components\jobrequest\jr-list\jr-list.component.ts
+M       src\assets\css\app.less
+M       src\index.html

@@ -1,0 +1,121 @@
+<div class="app-container">
+  <h2> Request details </h2>
+  <form class="app-container" [formGroup]="jobMain">
+    <mat-tab-group>
+      <mat-tab color="primary" label="Main">
+        <section class="app-section">
+          <div class="app-container app-section-column">
+            <mat-form-field>
+              <input matInput placeholder="Job Request ID" formControlName="jobRequestId" />
+              <mat-hint align="start">Auto Generated</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field [formGroup]="jobMain.controls.location">
+              <input matInput type="text" placeholder="Facility Code" formControlName="facilityCode" />
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput type="text" placeholder="Title" formControlName="title" />
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea matInput type="text" placeholder="description" formControlName="description"></textarea>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Priority" required formControlName="priority">
+                <mat-option [value]=10>LOW</mat-option>
+                <mat-option [value]=12>MEDIUM</mat-option>
+                <mat-option [value]=14>HIGH</mat-option>
+                <mat-option [value]=14>URGENT</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="app-container  app-section-column">
+            <mat-form-field>
+              <input matInput placeholder="Status" formControlName="jobReqStatus" />
+            </mat-form-field>
+            <mat-form-field [formGroup]="jobMain.controls.location">
+              <input matInput placeholder="Component" formControlName="name" />
+            </mat-form-field>
+            <mat-form-field [formGroup]="jobMain.controls.location">
+              <input matInput placeholder="Location" formControlName="alias" />
+            </mat-form-field>
+          </div>
+        </section>
+      </mat-tab>
+      <mat-tab color="primary" label="Others">
+        <section class="app-section">
+          <div class="app-container  app-section-column">
+            <mat-form-field>
+              <mat-select placeholder="Requestor" required formControlName="requestor">
+                <mat-option [value]=10>305</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select placeholder="Ship Category" required formControlName="shipStatus">
+                <mat-option [value]=10>1</mat-option>
+                <mat-option [value]=12>2</mat-option>
+                <mat-option [value]=14>3</mat-option>
+                <mat-option [value]=14>4</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select placeholder="System Category" required formControlName="equipmentStatus">
+                <mat-option [value]=10>2P</mat-option>
+                <mat-option [value]=12>3W</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select placeholder="Ship Class" required formControlName="shipClass">
+                <mat-option [value]=10>Patrol</mat-option>
+                <mat-option [value]=12>MRSS</mat-option>
+                <mat-option [value]=14>Other</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+          <div class="app-container  app-section-column">
+            <mat-form-field>
+              <mat-select placeholder="Type" required formControlName="type">
+                <mat-option [value]=10>Corrective</mat-option>
+                <mat-option [value]=12>URDEF</mat-option>
+                <mat-option [value]=14>GURDEF</mat-option>
+                <mat-option [value]=14>Refit</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select placeholder="Activity" required formControlName="activity">
+                <mat-option [value]=10>Alignment</mat-option>
+                <mat-option [value]=12>Calibration</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="From Section" required formControlName="fromSection">
+                <mat-option [value]=10>ME</mat-option>
+                <mat-option [value]=12>ME2</mat-option>
+                <mat-option [value]=14>NONE</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="To Section" required formControlName="toSection">
+                <mat-option [value]=10>ME2</mat-option>
+                <mat-option [value]=12>ME</mat-option>
+                <mat-option [value]=14>NONE</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="date" placeholder="Date Raised" formControlName="dateRaised" />
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="date" placeholder="Date Required" formControlName="dateRequested" />
+            </mat-form-field>
+          </div>
+        </section>
+      </mat-tab>
+    </mat-tab-group>
+  </form>
+</div>

@@ -1,0 +1,130 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <div style="width:100%">
+    <div style="width:40px;display:inline-block;">
+      <button mat-icon-button (click)="shipnav.toggle()">
+          <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
+    </div>
+    <div class="app-module-title">
+      Ship Readiness
+    </div>
+  </div>
+  <mat-sidenav-container class="appfilter-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav class="appfilter-sidenav-container-panel" #shipnav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <div class="app-container">
+        <section class="app-section">
+          <div class="app-container app-section-column">
+            <form class="app-container" [formGroup]="shipForm">
+              <div style="height: 38px;padding-top: 3px;text-align: left; margin-left:auto; margin-right:5px;">
+                <button mat-raised-button matStepperDone (click)="onRefresh()">Apply</button>
+              </div>
+              <mat-form-field>
+                <input matInput [matDatepicker]="startDateTimePicker" placeholder="From Date" formControlName="fromDate" />
+                <mat-datepicker-toggle matSuffix [for]="startDateTimePicker"></mat-datepicker-toggle>
+                <mat-datepicker #startDateTimePicker></mat-datepicker>
+                <mat-hint align="start">Select a date</mat-hint>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput type="number" min="1" max="156" placeholder="Total Weeks" formControlName="totalWeeks" />
+                <mat-hint align="start">Enter how many weeks</mat-hint>
+              </mat-form-field>
+
+              <h3>Ship Category</h3>
+              <mat-card>
+                <mat-list class="app-list-item">
+                  <label mat-subheader>CAT1</label>
+                  <mat-radio-group placeholder="CAT1" formControlName="cat1" (change)="refreshChart()">
+                    <mat-radio-button value="OFF">OFF</mat-radio-button>
+                    <mat-radio-button value="ON">ON</mat-radio-button>
+                  </mat-radio-group>
+                </mat-list>
+                <mat-list class="app-list-item">
+                  <label mat-subheader>CAT2</label>
+                  <mat-radio-group placeholder="CAT2" formControlName="cat2" (change)="refreshChart()">
+                    <mat-radio-button value="OFF">OFF</mat-radio-button>
+                    <mat-radio-button value="ON">ON</mat-radio-button>
+                  </mat-radio-group>
+                </mat-list>
+                <mat-list class="app-list-item">
+                  <label mat-subheader>CAT3</label>
+                  <mat-radio-group placeholder="CAT3" formControlName="cat3" (change)="refreshChart()">
+                    <mat-radio-button value="OFF">OFF</mat-radio-button>
+                    <mat-radio-button value="ON">ON</mat-radio-button>
+                  </mat-radio-group>
+                </mat-list>
+                <mat-list class="app-list-item">
+                  <label mat-subheader>CAT4</label>
+                  <mat-radio-group placeholder="CAT4" formControlName="cat4" (change)="refreshChart()">
+                    <mat-radio-button value="OFF">OFF</mat-radio-button>
+                    <mat-radio-button value="ON">ON</mat-radio-button>
+                  </mat-radio-group>
+                </mat-list>
+                <mat-list class="app-list-item">
+                  <label mat-subheader>CAT5</label>
+                  <mat-radio-group placeholder="CAT5" formControlName="cat5" (change)="refreshChart()">
+                    <mat-radio-button value="OFF">OFF</mat-radio-button>
+                    <mat-radio-button value="ON">ON</mat-radio-button>
+                  </mat-radio-group>
+                </mat-list>
+                <mat-list class="app-list-item">
+                  <label mat-subheader>Refit</label>
+                  <mat-radio-group placeholder="Refit" formControlName="refit" (change)="refreshChart()">
+                    <mat-radio-button value="OFF">OFF</mat-radio-button>
+                    <mat-radio-button value="ON">ON</mat-radio-button>
+                  </mat-radio-group>
+                </mat-list>
+              </mat-card>
+              <h3>Defects</h3>
+
+              <mat-card>
+                <mat-list class="app-list-item">
+                  <label mat-subheader>URDEF</label>
+                  <mat-radio-group placeholder="URDEF" formControlName="urdef" (change)="refreshChart()">
+                    <mat-radio-button value="OFF">OFF</mat-radio-button>
+                    <mat-radio-button value="ON">ON</mat-radio-button>
+                  </mat-radio-group>
+                </mat-list>
+                <mat-list class="app-list-item">
+                  <label mat-subheader>GURDEF</label>
+                  <mat-radio-group placeholder="GURDEF" formControlName="gurdef" (change)="refreshChart()">
+                    <mat-radio-button value="OFF">OFF</mat-radio-button>
+                    <mat-radio-button value="ON">ON</mat-radio-button>
+                  </mat-radio-group>
+                </mat-list>
+                <mat-list class="app-list-item">
+                  <label mat-subheader>Other</label>
+                  <mat-radio-group placeholder="Other" formControlName="other" (change)="refreshChart()">
+                    <mat-radio-button value="OFF">OFF</mat-radio-button>
+                    <mat-radio-button value="ON">ON</mat-radio-button>
+                  </mat-radio-group>
+                </mat-list>
+              </mat-card>
+
+            </form>
+          </div>
+        </section>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <mat-tab-group>
+        <mat-tab color="primary" label="Summary">
+          <app-ship-overall-readiness-dashboard></app-ship-overall-readiness-dashboard>
+        </mat-tab>
+        <mat-tab color="primary" label="Category">
+          <app-ship-dashboard [seriesData]="seriesData"></app-ship-dashboard>
+        </mat-tab>
+        <mat-tab color="primary" label="Job Type">
+          <app-ship-jobtype-dashboard></app-ship-jobtype-dashboard>
+        </mat-tab>
+        <mat-tab color="primary" label="Details">
+          <app-ship-list></app-ship-list>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+

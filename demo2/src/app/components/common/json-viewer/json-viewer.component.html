@@ -1,0 +1,11 @@
+<div style="min-height:300px;max-height:500px;overflow:auto;background-color:#f0f0f0">
+  <tree-root #tree [nodes]="nodes" [options]="options" (updateData)= "onUpdateData(tree, $event)">
+    <ng-template #treeNodeTemplate let-node let-index="index">
+        <span>{{ node.data.name }} 
+        </span>
+        <span class="tree-node-value">
+          {{ node.data.title}}
+        </span>
+      </ng-template>    
+  </tree-root>
+</div>

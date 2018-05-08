@@ -1,0 +1,16 @@
+<div style='width:100%;height:100%;float:right;border: 2px solid #c3c3c3;overflow:hidden'>
+    <div style='height:470px;overflow:auto'>
+        <ngx-charts-bar-vertical-2d class="wp-chart-dark"
+            [view]="view" 
+            [scheme]="maintenananceLevelDashBoard.colorScheme" 
+            [results]="maintenananceLevelDashBoard.data.multi" 
+            [gradient]="maintenananceLevelDashBoard.gradient"
+            [legend]="maintenananceLevelDashBoard.showLegend" 
+            [xAxis]="maintenananceLevelDashBoard.showXAxis" [yAxis]="maintenananceLevelDashBoard.showYAxis" 
+            [showXAxisLabel]="maintenananceLevelDashBoard.showXAxisLabel"
+            [showYAxisLabel]="maintenananceLevelDashBoard.showYAxisLabel" 
+            [xAxisLabel]="maintenananceLevelDashBoard.xAxisLabel" [yAxisLabel]="maintenananceLevelDashBoard.yAxisLabel"
+            (select)="maintenananceLevelDashBoard.actions.charts.onSelect($event, vm)">
+        </ngx-charts-bar-vertical-2d>
+    </div>
+</div>
